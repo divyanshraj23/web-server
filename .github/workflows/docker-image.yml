@@ -25,7 +25,7 @@ jobs:
     #   working-directory: ./path/to/your/app
 
     - name: Tag Docker image
-      run: docker build . --file Dockerfile --tag my-docker-image:latest divyanshuraj23/my-docker-image:latest
+      run: docker build . --file Dockerfile --tag divyanshuraj23/my-docker-image:latest
 
     - name: Push Docker image
       run: docker push divyanshuraj23/my-docker-image:latest
