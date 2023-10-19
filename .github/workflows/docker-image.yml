@@ -11,20 +11,21 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+    #   uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Set up Docker
-      uses: docker/setup-action@v2
+    # - name: Set up Docker
+    #   uses: docker/setup-action@v2
 
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Build Docker image
-      run: docker build -t my-docker-image:latest .
-      working-directory: ./path/to/your/app
+    # - name: Build Docker image
+    #   run: docker build -t my-docker-image:latest .
+    #   working-directory: ./path/to/your/app
 
     - name: Tag Docker image
-      run: docker tag my-docker-image:latest ${{ secrets.DOCKER_USER }}/my-docker-image:latest
+      run: docker build . --file Dockerfile --tag my-docker-image:latest ${{ secrets.DOCKER_USER }}/my-docker-image:latest
 
     - name: Push Docker image
       run: docker push ${{ secrets.DOCKER_USER }}/my-docker-image:latest
